@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class UploadedFiles extends Migration
 {
@@ -39,6 +40,7 @@ class UploadedFiles extends Migration
             'updated_at' => [
                 'type' => 'DATETIME',
                 'null' => false,
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
             
             'deleted_at' => [

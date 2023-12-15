@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class Persons extends Migration
 {
@@ -50,6 +51,7 @@ class Persons extends Migration
             'updated_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
         ]);
         $this->forge->addKey('id', true);

@@ -45,7 +45,7 @@ class Login extends BaseController
         $token = JWT::encode($payload, $key, 'HS256');
  
         $response = [
-            'message' => 'Login Succesful',
+            'message' => 'Succès de la connexion',
             'token' => $token
         ];
          

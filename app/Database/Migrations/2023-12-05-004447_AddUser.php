@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class AddUser extends Migration
 {
@@ -14,6 +15,10 @@ class AddUser extends Migration
                 'type' => 'BIGINT',
                 'constraint' => 255,
                 'auto_increment' => true
+            ],
+            'role' => [
+                'type' => 'INT',
+                'unsigned' => true,
             ],
             'fullname'       => [
 				'type'       => 'VARCHAR',
@@ -30,11 +35,12 @@ class AddUser extends Migration
             ],
             'created_at' => [
                 'type' => 'TIMESTAMP',
-                'null' => true
+                'null' => false
             ],
             'updated_at' => [
                 'type' => 'TIMESTAMP',
-                'null' => true
+                'null' => false,
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
         ]);
         $this->forge->addPrimaryKey('id');

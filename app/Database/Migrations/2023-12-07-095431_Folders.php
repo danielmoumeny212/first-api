@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class Folders extends Migration
 {
@@ -15,6 +16,16 @@ class Folders extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
+            'contractor' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
+            'recipient' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],            
             'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -22,19 +33,27 @@ class Folders extends Migration
             'status'      => [
                 'type'           => 'ENUM',
                 'constraint'     => ['complet', 'incomplet'],
-                'default'        => 'entry',
-            ],           
-            
+                'default'        => 'incomplet',
+            ],                    
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => false,
             ],
-
+            'created_by' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
             'updated_at' => [
                 'type' => 'DATETIME',
                 'null' => false,
+                'default' =>new RawSql('CURRENT_TIMESTAMP'),
             ],
-
+            'updated_by' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
             'deleted_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
